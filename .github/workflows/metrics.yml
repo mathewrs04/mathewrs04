@@ -68,15 +68,4 @@ jobs:
           plugin_languages_details: bytes-size, percentage
           plugin_languages_limit: 4
 
-  # Job 4: Untuk metrik klasik dengan plugin lines
-  classic-metrics:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    steps:
-      - uses: lowlighter/metrics@latest
-        with:
-          filename: metrics.classic.svg
-          token: ${{ secrets.METRICS_TOKEN }}
-          base: header, repositories
-          plugin_lines: yes
+
