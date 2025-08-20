@@ -7,7 +7,20 @@ on:
   workflow_dispatch:
 
 jobs:
-  # Job pertama: Untuk menghasilkan kalender tahunan
+  # Job 4: Untuk metrik klasik dengan plugin lines
+  classic-metrics:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: lowlighter/metrics@latest
+        with:
+          filename: metrics.classic.svg
+          token: ${{ secrets.METRICS_TOKEN }}
+          base: header, repositories
+          plugin_lines: yes
+          
+  # Job 1: Untuk menghasilkan kalender tahunan
   full-year-calendar:
     runs-on: ubuntu-latest
     permissions:
@@ -21,18 +34,49 @@ jobs:
           plugin_isocalendar: yes
           plugin_isocalendar_duration: full-year
   
-  # Job kedua: Untuk menghasilkan metrik lainnya
-  other-metrics:
+  # Job 2: Untuk menampilkan bahasa dari repositori yang di-star
+  starlists-languages:
     runs-on: ubuntu-latest
     permissions:
       contents: write
     steps:
       - uses: lowlighter/metrics@latest
         with:
-          filename: metrics.repository.svg
+          filename: metrics.plugin.starlists.languages.svg
           token: ${{ secrets.METRICS_TOKEN }}
-          # Plugin seperti 'lines' dan 'projects' bekerja lebih baik dengan metrik dasar
-          base: header, activity, community, repositories, metadata
+          base: ""
+          plugin_starlists: yes
+          plugin_starlists_languages: yes
+          plugin_starlists_limit_languages: 8
+          plugin_starlists_limit_repositories: 0
+          plugin_starlists_only: Awesome
+  
+  # Job 3: Untuk menampilkan bahasa yang paling sering digunakan
+  most-used-languages:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: lowlighter/metrics@latest
+        with:
+          filename: metrics.plugin.languages.details.svg
+          token: ${{ secrets.METRICS_TOKEN }}
+          base: ""
+          plugin_languages: yes
+          plugin_languages_ignored: >-
+            html, css, tex, less, dockerfile, makefile, qmake, lex, cmake, shell, gnuplot
+          plugin_languages_details: bytes-size, percentage
+          plugin_languages_limit: 4
+
+  # Job 4: Untuk metrik klasik dengan plugin lines
+  classic-metrics:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: lowlighter/metrics@latest
+        with:
+          filename: metrics.classic.svg
+          token: ${{ secrets.METRICS_TOKEN }}
+          base: header, repositories
           plugin_lines: yes
-          plugin_followup: yes
-          plugin_projects: yes
