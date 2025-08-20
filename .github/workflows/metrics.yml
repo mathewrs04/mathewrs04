@@ -1,18 +1,38 @@
 name: Metrics
+
 on:
-  # Schedule: runs at 4am every day
+  # Jadwal: berjalan setiap jam 4 pagi
   schedule: [{cron: "0 4 * * *"}]
-  # You can also run it manually
+  # Anda juga bisa menjalankannya secara manual
   workflow_dispatch:
+
 jobs:
-  github-metrics:
+  # Job pertama: Untuk menghasilkan kalender tahunan
+  full-year-calendar:
     runs-on: ubuntu-latest
     permissions:
       contents: write
     steps:
       - uses: lowlighter/metrics@latest
         with:
+          filename: metrics.plugin.isocalendar.fullyear.svg
           token: ${{ secrets.METRICS_TOKEN }}
+          base: ""
+          plugin_isocalendar: yes
+          plugin_isocalendar_duration: full-year
+  
+  # Job kedua: Untuk menghasilkan metrik lainnya
+  other-metrics:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: lowlighter/metrics@latest
+        with:
+          filename: metrics.repository.svg
+          token: ${{ secrets.METRICS_TOKEN }}
+          # Plugin seperti 'lines' dan 'projects' bekerja lebih baik dengan metrik dasar
           base: header, activity, community, repositories, metadata
-          base_options: >
-            timezone=Asia/Jakarta
+          plugin_lines: yes
+          plugin_followup: yes
+          plugin_projects: yes
