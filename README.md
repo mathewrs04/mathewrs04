@@ -1,5 +1,8 @@
 <h2 align="left">Hi 👋! My name is Reynald and I'm a Programmer, from Surabaya</h2>
 
+<h2 align="left">About Me</h2>
+<h3 align="left">I am Mathew, a passionate programmer based in Surabaya. With a keen interest in various programming languages like PHP, CSS, Java, HTML, Blade, JavaScript, and Kotlin, I aim to create innovative solutions and explore diverse domains in software development.</h3>
+
 ###
 
 <div align="center">
