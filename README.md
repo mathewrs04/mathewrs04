@@ -8,7 +8,15 @@
 
 As a passionate programmer, I am focused on creating innovative solutions and exploring diverse domains in software development. My journey is centered around mastering full-stack principles and applying my skills in a variety of projects.
 
----
+
+###
+
+
+<div align="center">
+  
+  <img src="https://github-readme-stats.vercel.app/api/top-langs?username=mathewrs04&locale=en&hide_title=false&layout=compact&card_width=320&langs_count=5&theme=dracula&hide_border=false&order=2" height="150" alt="languages graph"  />
+</div>
+
 
 ###
 
