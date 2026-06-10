@@ -1,6 +1,6 @@
 <h1 align="left">Hi there 👋! I'm Reynald</h1>
 
-<h3 align="left">Informatics Student & Full-Stack Developer based in Surabaya, passionate about building web and mobile applications.</h3>
+<h3 align="left">Full-Stack Developer based in Surabaya, passionate about building web and mobile applications.</h3>
 
 ---
 
